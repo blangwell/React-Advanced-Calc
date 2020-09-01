@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-let mutateFirstNum = '0'
-
 const Calculator = props => {
     // Declare state variables
     let [operand, setOperand] = useState('')
@@ -15,7 +13,7 @@ const Calculator = props => {
     // DONE equals button - evaluate answers
     // DONE DONT ALLOW ZERO AS FIRST NUMBER
 
-    // show number of current state
+    // DONE show number of current state
 
     
     // CONCAT THE NUMBERS
@@ -53,7 +51,6 @@ const Calculator = props => {
         }
     }
 
-
     let updateOperand = (e) => {
         let thisOperand = e.target.innerText;
         operand == '' ? setOperand(thisOperand)
@@ -84,7 +81,9 @@ const Calculator = props => {
                         setSecondNum('') 
                         setSolution('') 
                         setOperand('')}}>AC</button>
-                    <button className="calc-button calc-button-top">+/-</button>
+                    <button className="calc-button calc-button-top"
+                    onClick={negPos}
+                    >+/-</button>
                     <button className="calc-button calc-button-top">%</button>
                     <button className="calc-button calc-button-op"
                     onClick={() => setOperand('/')}
