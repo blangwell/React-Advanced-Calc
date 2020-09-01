@@ -75,7 +75,7 @@ const Calculator = props => {
             <h1>React Calculator</h1>
             <div className="calc-container">
                 <p>Values: </p>
-                <div className="answer-box">{displayCalc()}</div>
+                <div className="answer-box">{firstNum + ' ' + operand + ' ' + secondNum + solution  }</div>
                 <div className="calc-row">
                     {/* // DONE clear button (clear state) */}
                     <button className="calc-button calc-button-top"
