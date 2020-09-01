@@ -63,10 +63,10 @@ const Calculator = props => {
         setFirstNum('')
         setSecondNum('')
         setOperand('')
-        if (operand === '+') setSolution(firstNum + secondNum)
-        else if (operand === '-') setSolution(firstNum - secondNum)
-        else if (operand === '*') setSolution(firstNum * secondNum)
-        else if (operand === '/') setSolution(firstNum / secondNum)
+        if (operand === '+') setSolution(parseInt(firstNum) + parseInt(secondNum))
+        else if (operand === '-') setSolution(parseInt(firstNum) - parseInt(secondNum))
+        else if (operand === '*') setSolution(parseInt(firstNum) * parseInt(secondNum))
+        else if (operand === '/') setSolution(parseInt(firstNum) / parseInt(secondNum))
     }
 
     return (
