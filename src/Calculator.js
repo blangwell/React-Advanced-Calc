@@ -2,16 +2,28 @@ import React, { useState } from 'react'
 
 const Calculator = props => {
     // Declare state variables
+    // 4 main operators (store in state)
+    let [operand, setOperand] = useState(null)
+    // 0-9 store numerical vals in state
+    let [numVal, setNumVal] = useState(0)
 
+
+// TODO clear button (clear state)
+// equals button - evaluate answers
+// error messages if user makes a mistake
+// show number of current state
 
     return (
         <div className="container">
             <h1>React Calculator</h1>
             <div className="calc-container">
                 <p>Values: </p>
-                <div className="answer-box">TBD</div>
+                <div className="answer-box">{numVal}</div>
                 <div className="calc-row">
-                    <button className="calc-button calc-button-top">AC</button>
+                    <button className="calc-button calc-button-top"
+                    onClick={() => {
+                        setNumVal(0) 
+                        setOperand(null)}}>AC</button>
                     <button className="calc-button calc-button-top">+/-</button>
                     <button className="calc-button calc-button-top">%</button>
                     <button className="calc-button calc-button-op">/</button>
