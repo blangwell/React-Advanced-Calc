@@ -9,7 +9,7 @@ const Calculator = props => {
     // done? 0-9 store numerical vals in state
     let [firstNum, setFirstNum] = useState('')
     let [secondNum, setSecondNum] = useState('')
-    let [solution, setSolution] = useState(null)
+    let [solution, setSolution] = useState('')
     let [calcMessage, setCalcMessage] = useState('')
 
     // DONE equals button - evaluate answers
@@ -19,9 +19,6 @@ const Calculator = props => {
 
     // show number of current state
 
-
-    let mutateSecondNum = '0'
-    // let mutateFirstNum = '0'
     // DONT ALLOW ZERO AS FIRST NUMBER
     
     // CONCAT THE NUMBERS
@@ -29,22 +26,27 @@ const Calculator = props => {
 
     // CONCAT RETURNS A NEW ARRAY
     let updateCalc = (num) => {
-        if (firstNum.length === 0) {
-            console.log(num)
-            setFirstNum(num)
+        if (operand === '') {
+            if (firstNum.length === 0) {
+                setSolution('');
+                setFirstNum(num);
+            } else {
+                setFirstNum(firstNum.concat(num));
+            }
         } else {
-            setFirstNum(firstNum.concat(num));
-            mutateFirstNum.concat(num);
-            console.log(num)
-            console.log('mutated Value',mutateFirstNum)
-            
+            if (secondNum.length === 0) {
+                console.log('second num : ', num)
+                setSecondNum(num)
+            } else {
+                setSecondNum(secondNum.concat(num))
+            }
         }
     }
 
     let updateOperand = (e) => {
-        let thisOperand = e.target.innerText
+        let thisOperand = e.target.innerText;
         operand == '' ? setOperand(thisOperand)
-        : setCalcMessage('only one operand plz')
+        : setCalcMessage('only one operand plz');
     }
 
     // let handleZero = () => {
@@ -58,9 +60,9 @@ const Calculator = props => {
     // }
 
     let solve = () => {
-        setFirstNum(null)
-        setSecondNum(null)
-        setOperand(null)
+        setFirstNum('')
+        setSecondNum('')
+        setOperand('')
         if (operand === '+') setSolution(firstNum + secondNum)
         else if (operand === '-') setSolution(firstNum - secondNum)
         else if (operand === '*') setSolution(firstNum * secondNum)
