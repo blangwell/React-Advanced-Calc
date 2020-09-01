@@ -5,8 +5,8 @@ const Calculator = props => {
     // 4 main operators (store in state)
     let [operand, setOperand] = useState(null)
     // 0-9 store numerical vals in state
-    let [firstNum, setFirstNum] = useState(null)
-    let [secondNum, setSecondNum] = useState(null)
+    let [firstNum, setFirstNum] = useState(5)
+    let [secondNum, setSecondNum] = useState(5)
     let [solution, setSolution] = useState(null)
 
     // equals button - evaluate answers
@@ -19,17 +19,23 @@ const Calculator = props => {
     let mutateFirstNum = []
     let mutateSecondNum = []
     
+    // let updateCalc = (num) => {
+    //     // TODO push number clicked into mutateNum array
+    //     if (firstNum == null) {
+    //         mutateFirstNum.push(num)
+    //         // let arrayToNum = parseInt(mutateFirstNum.join(''))
+    //         // setFirstNum(arrayToNum)
+    //         console.log(mutateFirstNum)
+    //     } else {
+    //         mutateSecondNum.push(num)
+    //         console.log(mutateSecondNum)
+    //     }
+    // }
     let updateCalc = (num) => {
         // TODO push number clicked into mutateNum array
-        if (firstNum == null) {
-            mutateFirstNum.push(num)
-            // let arrayToNum = parseInt(mutateFirstNum.join(''))
-            // setFirstNum(arrayToNum)
-            console.log(mutateFirstNum)
-        } else {
-            mutateSecondNum.push(num)
-            console.log(mutateSecondNum)
-        }
+        mutateFirstNum.push(num)
+        console.log(mutateFirstNum)
+        return parseInt(mutateFirstNum.join(''))
     }
 
     let handleZero = () => {
@@ -55,7 +61,7 @@ const Calculator = props => {
     }
 
     let solve = () => {
-        
+        setSolution(firstNum + secondNum)
     }
 
     return (
@@ -125,7 +131,9 @@ const Calculator = props => {
                     onClick={handleZero}
                     >0</button>
                     <button className="calc-button">.</button>
-                    <button className="calc-button calc-button-op">=</button>
+                    <button className="calc-button calc-button-op"
+                    onClick={solve}
+                    >=</button>
                 </div>
             </div>
         </div>
