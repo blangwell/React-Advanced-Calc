@@ -22,10 +22,22 @@ const Calculator = props => {
     let updateCalc = (num) => {
         // TODO shift number clicked into mutateNum array
         if (operand == null) {
-            mutateFirstNum.unshift(num)
+            mutateFirstNum.push(num)
             console.log(mutateFirstNum)
+        } else {
+            mutateSecondNum.push(num)
+            console.log(mutateSecondNum)
         }
-        else setSecondNum(num)
+    }
+
+    let handleZero = () => {
+        if (operand == null && mutateFirstNum.length > 0) {
+            mutateFirstNum.push(0)
+            console.log(mutateFirstNum)
+        } else if (operand != null & mutateSecondNum.length > 0) {
+            mutateSecondNum.push(0)
+            console.log(mutateSecondNum)
+        }
     }
 
     return (
@@ -49,24 +61,40 @@ const Calculator = props => {
                     >/</button>
                 </div>
                 <div className="calc-row">
-                    <button className="calc-button">7</button>
-                    <button className="calc-button">8</button>
-                    <button className="calc-button">9</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(7)}}
+                    >7</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(8)}}
+                    >8</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(9)}}
+                    >9</button>
                     <button className="calc-button calc-button-op"
                     onClick={() => setOperand('x')}
                     >x</button>
                 </div>
                 <div className="calc-row">
-                    <button className="calc-button">4</button>
-                    <button className="calc-button">5</button>
-                    <button className="calc-button">6</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(4)}}
+                    >4</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(5)}}
+                    >5</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(6)}}
+                    >6</button>
                     <button className="calc-button calc-button-op"
                     onClick={() => setOperand('-')}
                     >-</button>
                 </div>
                 <div className="calc-row">
-                    <button className="calc-button">1</button>
-                    <button className="calc-button">2</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(1)}}
+                    >1</button>
+                    <button className="calc-button"
+                    onClick={() => {updateCalc(2)}}
+                    >2</button>
                     <button className="calc-button"
                     onClick={() => {updateCalc(3)}}
                     >3</button>
@@ -75,7 +103,9 @@ const Calculator = props => {
                     >+</button>
                 </div>
                 <div className="calc-row">
-                    <button className="calc-button width-2">0</button>
+                    <button className="calc-button width-2"
+                    onClick={handleZero}
+                    >0</button>
                     <button className="calc-button">.</button>
                     <button className="calc-button calc-button-op">=</button>
                 </div>
