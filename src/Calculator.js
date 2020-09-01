@@ -10,9 +10,13 @@ const Calculator = props => {
     let [firstNum, setFirstNum] = useState('')
     let [secondNum, setSecondNum] = useState('')
     let [solution, setSolution] = useState(null)
+    let [calcMessage, setCalcMessage] = useState('')
 
     // DONE equals button - evaluate answers
+
     // error messages if user makes a mistake
+
+
     // show number of current state
 
 
@@ -23,12 +27,13 @@ const Calculator = props => {
     // CONCAT THE NUMBERS
 
 
-
+    // CONCAT RETURNS A NEW ARRAY
     let updateCalc = (num) => {
         if (firstNum.length === 0) {
             console.log(num)
-            setFirstNum(mutateFirstNum);
+            setFirstNum(num)
         } else {
+            setFirstNum(firstNum.concat(num));
             mutateFirstNum.concat(num);
             console.log(num)
             console.log('mutated Value',mutateFirstNum)
@@ -37,9 +42,9 @@ const Calculator = props => {
     }
 
     let updateOperand = (e) => {
-        // e.preventDefaults();
-        operand == '' ? console.log(e.target.innerText)
-        : console.log('error! only one at a time')
+        let thisOperand = e.target.innerText
+        operand == '' ? setOperand(thisOperand)
+        : setCalcMessage('only one operand plz')
     }
 
     // let handleZero = () => {
@@ -134,6 +139,7 @@ const Calculator = props => {
                     >=</button>
                 </div>
             </div>
+            <h3>{calcMessage}</h3>
         </div>
     )
 }
