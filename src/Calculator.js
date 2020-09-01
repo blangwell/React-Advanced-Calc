@@ -43,21 +43,20 @@ const Calculator = props => {
         }
     }
 
+    let handleZero = (e) => {
+        if (operand === '' && firstNum.length > 0) {
+            setFirstNum(firstNum.concat(0))
+        } else if (operand !== '' && secondNum.length > 0) {
+            setSecondNum(secondNum.concat(0))
+        }
+    }
+
+
     let updateOperand = (e) => {
         let thisOperand = e.target.innerText;
         operand == '' ? setOperand(thisOperand)
         : setCalcMessage('only one operand plz');
     }
-
-    // let handleZero = () => {
-    //     if (operand == null && mutateFirstNum.length > 0) {
-    //         mutateFirstNum.push(0)
-    //         console.log(mutateFirstNum)
-    //     } else if (operand != null & mutateSecondNum.length > 0) {
-    //         mutateSecondNum.push(0)
-    //         console.log(mutateSecondNum)
-    //     }
-    // }
 
     let solve = () => {
         setFirstNum('')
@@ -79,9 +78,9 @@ const Calculator = props => {
                     {/* // DONE clear button (clear state) */}
                     <button className="calc-button calc-button-top"
                     onClick={() => {
-                        setFirstNum(0) 
-                        setSecondNum(0) 
-                        setSolution(0) 
+                        setFirstNum('') 
+                        setSecondNum('') 
+                        setSolution('') 
                         setOperand('')}}>AC</button>
                     <button className="calc-button calc-button-top">+/-</button>
                     <button className="calc-button calc-button-top">%</button>
@@ -133,7 +132,7 @@ const Calculator = props => {
                 </div>
                 <div className="calc-row">
                     <button className="calc-button width-2"
-                    // onClick={handleZero}
+                    onClick={handleZero}
                     >0</button>
                     <button className="calc-button">.</button>
                     <button className="calc-button calc-button-op"
