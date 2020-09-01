@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Calculator = props => {
     // Declare state variables
     // 4 main operators (store in state)
-    let [operand, setOperand] = useState('')
+    let [operand, setOperand] = useState(null)
     // 0-9 store numerical vals in state
     let [firstNum, setFirstNum] = useState(0)
     let [secondNum, setSecondNum] = useState(0)
@@ -15,9 +15,17 @@ const Calculator = props => {
 
     // DONT ALLOW ZERO AS FIRST NUMBER
     // if (numVal.length === 0) setNumVal(0)
+
+    let mutateFirstNum = []
+    let mutateSecondNum = []
     
-    updateCalc = (num) => {
-        let numbers = numVal
+    let updateCalc = (num) => {
+        // TODO shift number clicked into mutateNum array
+        if (operand == null) {
+            mutateFirstNum.unshift(num)
+            console.log(mutateFirstNum)
+        }
+        else setSecondNum(num)
     }
 
     return (
@@ -25,7 +33,7 @@ const Calculator = props => {
             <h1>React Calculator</h1>
             <div className="calc-container">
                 <p>Values: </p>
-                <div className="answer-box">{numVal}</div>
+                <div className="answer-box">{firstNum}</div>
                 <div className="calc-row">
                     {/* // DONE clear button (clear state) */}
                     <button className="calc-button calc-button-top"
@@ -60,6 +68,7 @@ const Calculator = props => {
                     <button className="calc-button">1</button>
                     <button className="calc-button">2</button>
                     <button className="calc-button"
+                    onClick={() => {updateCalc(3)}}
                     >3</button>
                     <button className="calc-button calc-button-op"
                     onClick={() => setOperand('+')}
