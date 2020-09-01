@@ -1,43 +1,45 @@
 import React, { useState } from 'react'
 
+let mutateFirstNum = '0'
+
 const Calculator = props => {
     // Declare state variables
-    // 4 main operators (store in state)
-    let [operand, setOperand] = useState(null)
-    // 0-9 store numerical vals in state
-    let [firstNum, setFirstNum] = useState(null)
-    let [secondNum, setSecondNum] = useState(null)
+    // DONE 4 main operators (store in state)
+    let [operand, setOperand] = useState('')
+    // done? 0-9 store numerical vals in state
+    let [firstNum, setFirstNum] = useState('')
+    let [secondNum, setSecondNum] = useState('')
     let [solution, setSolution] = useState(null)
 
-    // equals button - evaluate answers
+    // DONE equals button - evaluate answers
     // error messages if user makes a mistake
     // show number of current state
 
-    // DONT ALLOW ZERO AS FIRST NUMBER
 
-    let mutateFirstNum = ''
-    let mutateSecondNum = ''
+    let mutateSecondNum = '0'
+    // let mutateFirstNum = '0'
+    // DONT ALLOW ZERO AS FIRST NUMBER
     
     // CONCAT THE NUMBERS
 
 
 
     let updateCalc = (num) => {
-        // TODO push number clicked into mutateNum array
-        // if (operand === null) {
-        //     mutateFirstNum.push(num)
-        //     console.log(mutateFirstNum)
-        //     let firstArrayToNum = parseInt(mutateFirstNum.join(''))
-        //     setFirstNum(firstArrayToNum)
-        // } else {
-        //     mutateSecondNum.push(num)
-        //     console.log('second num', mutateSecondNum)
-        //     let secondArrayToNum = parseInt(mutateSecondNum.join(''))
-        // }
-
         if (firstNum.length === 0) {
-            setFirstNum(num)
+            console.log(num)
+            setFirstNum(mutateFirstNum);
+        } else {
+            mutateFirstNum.concat(num);
+            console.log(num)
+            console.log('mutated Value',mutateFirstNum)
+            
         }
+    }
+
+    let updateOperand = (e) => {
+        // e.preventDefaults();
+        operand == '' ? console.log(e.target.innerText)
+        : console.log('error! only one at a time')
     }
 
     // let handleZero = () => {
@@ -119,12 +121,12 @@ const Calculator = props => {
                     onClick={() => {updateCalc('3')}}
                     >3</button>
                     <button className="calc-button calc-button-op"
-                    onClick={() => setOperand('+')}
+                    onClick={(e) => updateOperand(e)}
                     >+</button>
                 </div>
                 <div className="calc-row">
                     <button className="calc-button width-2"
-                    onClick={handleZero}
+                    // onClick={handleZero}
                     >0</button>
                     <button className="calc-button">.</button>
                     <button className="calc-button calc-button-op"
