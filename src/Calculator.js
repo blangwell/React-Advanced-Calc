@@ -4,27 +4,29 @@ let mutateFirstNum = '0'
 
 const Calculator = props => {
     // Declare state variables
-    // DONE 4 main operators (store in state)
     let [operand, setOperand] = useState('')
-    // done? 0-9 store numerical vals in state
     let [firstNum, setFirstNum] = useState('')
     let [secondNum, setSecondNum] = useState('')
     let [solution, setSolution] = useState('')
     let [calcMessage, setCalcMessage] = useState('')
-
+    
+    // DONE 4 main operators (store in state)
+    // done? 0-9 store numerical vals in state
     // DONE equals button - evaluate answers
-
-    // error messages if user makes a mistake
-
+    // DONE DONT ALLOW ZERO AS FIRST NUMBER
 
     // show number of current state
 
-    // DONT ALLOW ZERO AS FIRST NUMBER
     
     // CONCAT THE NUMBERS
-
-
     // CONCAT RETURNS A NEW ARRAY
+
+    let displayCalc = () => {
+        if (operand === '' && solution === '') return firstNum
+        else if (operand !== '' && solution === '') return secondNum
+        else if (solution !== '') return solution
+    }
+
     let updateCalc = (num) => {
         if (operand === '') {
             if (firstNum.length === 0) {
@@ -73,7 +75,7 @@ const Calculator = props => {
             <h1>React Calculator</h1>
             <div className="calc-container">
                 <p>Values: </p>
-                <div className="answer-box">{solution}</div>
+                <div className="answer-box">{displayCalc()}</div>
                 <div className="calc-row">
                     {/* // DONE clear button (clear state) */}
                     <button className="calc-button calc-button-top"
