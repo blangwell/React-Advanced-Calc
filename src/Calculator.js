@@ -5,9 +5,9 @@ const Calculator = props => {
     // 4 main operators (store in state)
     let [operand, setOperand] = useState(null)
     // 0-9 store numerical vals in state
-    let [firstNum, setFirstNum] = useState(0)
-    let [secondNum, setSecondNum] = useState(0)
-    let [solution, setSolution] = useState(0)
+    let [firstNum, setFirstNum] = useState(null)
+    let [secondNum, setSecondNum] = useState(null)
+    let [solution, setSolution] = useState(null)
 
     // equals button - evaluate answers
     // error messages if user makes a mistake
@@ -20,9 +20,11 @@ const Calculator = props => {
     let mutateSecondNum = []
     
     let updateCalc = (num) => {
-        // TODO shift number clicked into mutateNum array
-        if (operand == null) {
+        // TODO push number clicked into mutateNum array
+        if (firstNum == null) {
             mutateFirstNum.push(num)
+            // let arrayToNum = parseInt(mutateFirstNum.join(''))
+            // setFirstNum(arrayToNum)
             console.log(mutateFirstNum)
         } else {
             mutateSecondNum.push(num)
@@ -38,6 +40,22 @@ const Calculator = props => {
             mutateSecondNum.push(0)
             console.log(mutateSecondNum)
         }
+    }
+
+    let handleOperand = (operand) => {
+        if (operand === null && secondNum === null) {
+            setOperand(operand)
+            // let arrayToNum = parseInt(mutateFirstNum.join(''))
+            // setFirstNum(arrayToNum)
+            // console.log(arrayToNum)
+        } else if (operand != null) {
+            console.log('one at a time doofus')
+        }
+        // make a single number out of the array value
+    }
+
+    let solve = () => {
+        
     }
 
     return (
@@ -99,7 +117,7 @@ const Calculator = props => {
                     onClick={() => {updateCalc(3)}}
                     >3</button>
                     <button className="calc-button calc-button-op"
-                    onClick={() => setOperand('+')}
+                    onClick={() => handleOperand('+')}
                     >+</button>
                 </div>
                 <div className="calc-row">
